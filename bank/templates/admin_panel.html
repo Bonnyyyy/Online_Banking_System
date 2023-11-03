@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%
+  }
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Form Styles */
+  form {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  input[type="number"] {
+    width: 60px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    padding: 6px 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+  </header>
+  <div style="text-align: center;">
+    <button id="userButton">User Data</button>
+    <button id="transactionButton">Transaction Data</button>
+  </div>
+  
+  <!-- User Data -->
+  <div id="userData" style="display: none;">
+    <h2>User Data</h2>
+    <table>
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>First_name</th>
+            <th>Middle_name</th>
+            <th>Last_name</th>
+            <th>Gender</th>
+            <th>Dob</th>
+            <th>Ph_no</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>District</th>
+            <th>State</th>
+            <th>Pin</th>
+            <th>Aadhaar</th>
+            <th>PAN</th>
+            <th>passport</th>
+            <th>pic</th>
+            <th>username</th>
+            <th>password</th>
+            <th>mpin</th>
+            <th>question</th>
+            <th>answer</th>
+            <th>ac_no</th>
+            <th>balance</th>
+            <th>flag</th>
+              <!-- Add more table headers here -->
+          </tr>
+      </thead>
+      <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.First_name }}</td>
+            <td>{{ user.Middle_name }}</td>
+            <td>{{ user.Last_name }}</td>
+            <td>{{ user.Gender }}</td>
+            <td>{{ user.Dob }}</td>
+            <td>{{ user.Ph_no }}</td>
+            <td>{{ user.Email }}</td>
+            <td>{{ user.Address }}</td>
+            <td>{{ user.City }}</td>
+            <td>{{ user.District }}</td>
+            <td>{{ user.State }}</td>
+            <td>{{ user.Pin }}</td>
+            <td>{{ user.Aadhaar }}</td>
+            <td>{{ user.PAN }}</td>
+            <td>{{ user.passport }}</td>
+            <td>{{ user.pic }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.mpin }}</td>
+            <td>{{ user.question }}</td>
+            <td>{{ user.answer }}</td>
+            <td>{{ user.ac_no }}</td>
+            <td>{{ user.balance }}</td>
+            <td>{{ user.flag }}</td>
+            <td>
+              <form action="{% url 'validate_user' user.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Validate</button>
+              </form>
+              <form action="{% url 'add_balance' user.id %}" method="post">
+                {% csrf_token %}
+                <input type="number" name="amount" placeholder="Amount">
+                <button type="submit">Add Balance</button>
+              </form>
+            </td>
+              <!-- Add more table cells here for other fields -->
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  </div>
+  
+  <!-- Transaction Data -->
+  <div id="transactionData" style="display: none;">
+    <h2>Transaction Data</h2>
+    <table>
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+            <th>Reference No</th>
+            <th>Transection No</th>
+            <th>Credit</th>
+            <th>Debit</th>
+            <th>Balane</th>
+              <!-- Add more table headers here -->
+          </tr>
+      </thead>
+      <tbody>
+          {% for transection in transactions %}
+          <tr>
+            <td>{{ transection.id }}</td>
+            <td>{{ transection.fac_no }}</td>
+            <td>{{ transection.tac_no }}</td>
+            <td>{{ transection.date }}</td>
+            <td>{{ transection.reference }}</td>
+            <td>{{ transection.tr_id }}</td>
+            <td>{{ transection.credit }}</td>
+            <td>{{ transection.debit }}</td>
+            <td>{{ transection.balance }}</td>
+            
+              <!-- Add more table cells here for other fields -->
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  </div>
+  
+  <script>
+  document.getElementById("userButton").addEventListener("click", function() {
+    document.getElementById("userData").style.display = "block";
+    document.getElementById("transactionData").style.display = "none";
+  });
+    // Event listener for the Validate button
+    document.querySelectorAll(".validateBtn").forEach(function(button) {
+      button.addEventListener("click", function() {
+        const userId = button.getAttribute("data-user-id");
+        // You can use AJAX or fetch to send a request to update the flag
+        // Example:
+        // fetch(`/validate_user/${userId}/`)
+        //   .then(response => response.json())
+        //   .then(data => {
+        //     if (data.success) {
+        //       alert("User validated successfully.");
+        //       location.reload();
+        //     }
+        //   });
+      });
+    });
+  
+  
+  document.getElementById("transactionButton").addEventListener("click", function() {
+    document.getElementById("transactionData").style.display = "block";
+    document.getElementById("userData").style.display = "none";
+  });
+  // Event listener for the Add Balance button
+  document.querySelectorAll(".addBalanceBtn").forEach(function(button) {
+    button.addEventListener("click", function() {
+      const userId = button.getAttribute("data-user-id");
+      const amount = document.getElementById(`balanceInput_${userId}`).value;
+      // You can use AJAX or fetch to send a request to update the balance
+      // Example:
+      // fetch(`/add_balance/${userId}/${amount}/`)
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     if (data.success) {
+      //       alert("Balance added successfully.");
+      //       location.reload();
+      //     }
+      //   });
+    });
+  });
+  </script>
+  </body>
+</html>

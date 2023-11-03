@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home bank/Register</title>
+    <link rel="stylesheet" href="{% static 'mcss/style.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+  <div>
+	<nav class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="index" class="logo">Home Bank</a>
+      <ul class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <li><a href="index">Home</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <i class="uil uil-search search-icon" id="searchIcon"></i>
+      
+    </nav>
+  </div>
+    <div class="container">
+      <header>Register Here!</header>
+      <h4>{{m}}</h4>
+      <div class="progress-bar">
+        <div class="step">
+          <p>Personal Details</p>
+          <div class="bullet">
+            <span>1</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <p>Contact Details</p>
+          <div class="bullet">
+            <span>2</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <p>Identity Details</p>
+          <div class="bullet">
+            <span>3</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <p>LogIn Details</p>
+          <div class="bullet">
+            <span>4</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+      </div>
+      <div class="form-outer">
+        <form action="register">
+          <div class="page slide-page">
+            <div class="title">Basic Info:</div>
+            <div class="field">
+              <div class="label">First Name</div>
+              <input type="text" name="fname">
+            </div>
+			<div class="field">
+              <div class="label">Middle Name</div>
+              <input type="text" name="mname">
+            </div>
+            <div class="field">
+              <div class="label">Last Name</div>
+              <input type="text" name="lname">
+            </div>
+			<div class="field">
+              <div class="label">Gender</div>
+              <select name="gen">
+			    <option value="">select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+			<div class="field">
+              <div class="label">Date of Birth</div>
+              <input type="Date" name="dob">
+            </div>
+            <div class="field">
+              <button class="firstNext next">Next</button>
+            </div>
+			<div class="field">
+              <h4><a href="sign_in">already have an account? click here</a></h4>
+            </div>
+          </div>
+
+          <div class="page">
+            <div class="title">Contact Info:</div>
+            
+            <div class="field">
+              <div class="label">Phone Number</div>
+              <input type="Number" name="ph">
+            </div>
+			<div class="field">
+              <div class="label">Email Address</div>
+              <input type="text" name="email">
+            </div>
+			<div class="field">
+              <div class="label">Address</div>
+              <input type="text" name="add">
+            </div>
+			<div class="field">
+              <div class="label">City</div>
+              <input type="text" name="city">
+            </div>
+			<div class="field">
+              <div class="label">District</div>
+              <input type="text" name="dist">
+            </div>
+			<div class="field">
+              <div class="label">State</div>
+              <select name="state">
+			     <option value="">Select state</option>
+    <option value="AN">Andaman and Nicobar Islands</option>
+    <option value="AP">Andhra Pradesh</option>
+    <option value="AR">Arunachal Pradesh</option>
+    <option value="AS">Assam</option>
+    <option value="BR">Bihar</option>
+    <option value="CH">Chandigarh</option>
+    <option value="CT">Chhattisgarh</option>
+    <option value="DN">Dadra and Nagar Haveli</option>
+    <option value="DD">Daman and Diu</option>
+    <option value="DL">Delhi</option>
+    <option value="GA">Goa</option>
+    <option value="GJ">Gujarat</option>
+    <option value="HR">Haryana</option>
+    <option value="HP">Himachal Pradesh</option>
+    <option value="JK">Jammu and Kashmir</option>
+    <option value="JH">Jharkhand</option>
+    <option value="KA">Karnataka</option>
+    <option value="KL">Kerala</option>
+    <option value="LA">Ladakh</option>
+    <option value="LD">Lakshadweep</option>
+    <option value="MP">Madhya Pradesh</option>
+    <option value="MH">Maharashtra</option>
+    <option value="MN">Manipur</option>
+    <option value="ML">Meghalaya</option>
+    <option value="MZ">Mizoram</option>
+    <option value="NL">Nagaland</option>
+    <option value="OR">Odisha</option>
+    <option value="PY">Puducherry</option>
+    <option value="PB">Punjab</option>
+    <option value="RJ">Rajasthan</option>
+    <option value="SK">Sikkim</option>
+    <option value="TN">Tamil Nadu</option>
+    <option value="TG">Telangana</option>
+    <option value="TR">Tripura</option>
+    <option value="UP">Uttar Pradesh</option>
+    <option value="UT">Uttarakhand</option>
+    <option value="WB">West Bengal</option>
+              </select>
+            </div>
+		<div class="field">
+              <div class="label">Pin Code</div>
+              <input type="Number" name="pin">
+          </div>
+			
+            <div class="field btns">
+              <button class="prev-1 prev">Previous</button>
+              <button class="next-1 next">Next</button>
+            </div>
+          </div>
+
+          <div class="page">
+            <div class="field">
+              <div class="label">Aadhaar No.</div>
+              <input type="text" name="an">
+            </div>
+			<div class="field">
+              <div class="label">PAN</div>
+              <input type="text" name="pan">
+            </div>
+			<div class="field">
+              <div class="label">Passport No.</div>
+              <input type="text" name="pno">
+            </div>
+            <div class="field">
+                <div class="label">Upload photo</div>
+                <input type="file" name="pic" accept="image/*">
+              </div>
+            
+            <div class="field btns">
+              <button class="prev-2 prev">Previous</button>
+              <button class="next-2 next">Next</button>
+            </div>
+          </div>
+
+          <div class="page">
+            <div class="title">Login Details:</div>
+            <div class="field">
+              <div class="label">Username</div>
+              <input type="text" name="uname">
+            </div>
+            <div class="field">
+              <div class="label">Password</div>
+              <input type="password" id="password" name="password">
+            </div>
+			<div class="field">
+              <div class="label">Confirm Password</div>
+              <input type="password" id="con_password" name="con_password">
+            </div>
+            <div class="field">
+                <div class="label">4 digit mpin</div>
+                <input type="password" name="mpin" minlength="4" maxlength="4">
+              </div>
+			<div class="field">
+              <div class="label">Security Questions?</div>
+              <select name="scq">
+			    <option value="0">Mother's maiden name.</option> 
+				<option value="1">Name of town where you were born.</option> 
+				<option value="2">Name of first pet.</option>
+              </select>
+            </div>
+			<div class="field">
+              <div class="label">Answer</div>
+              <input type="text" name="sa">
+            </div>
+			<div class="field">
+              <div >terms & Conditions</div>
+              <input type="checkbox">
+            </div>
+            <div class="field btns">
+              <button class="prev-3 prev">Previous</button>
+              <button class="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+        var password = document.getElementById("password")
+  , confirm_password = document.getElementById("con_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+    </script>
+    <script src="{% static 'mjs/script.js' %}"></script>
+    
+
+  </body>
+</html>
